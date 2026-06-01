@@ -10,7 +10,13 @@ const salaryRoutes = require('./routes/salaries');
 const reportRoutes = require('./routes/reports');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: [
+      "http://localhost:5173",
+      "https://epms-ecru.vercel.app/",
+    ],
+    credentials: true,
+  }));
 app.use(express.json());
 
 app.get('/', (_req, res) => res.json({ message: 'EPMS API running' }));
